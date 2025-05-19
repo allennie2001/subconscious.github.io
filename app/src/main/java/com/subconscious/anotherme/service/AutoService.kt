@@ -6,19 +6,16 @@ import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
-import android.graphics.PixelFormat
 import android.os.Build
 import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Toast
 import com.subconscious.anotherme.R
 import com.subconscious.anotherme.controller.BaseController
-import com.subconscious.anotherme.controller.XiaoHongShuController
+import com.subconscious.anotherme.controller.XiaoHongShuAutoReplyController
+import com.subconscious.anotherme.controller.XiaoHongShuSearchContentController
+import com.subconscious.anotherme.controller.XiaoHongShuSearchUserController
 import com.subconscious.anotherme.util.ClipboardUtil
-import com.subconscious.anotherme.util.JumpUtil
 
 
 class AutoService : AccessibilityService() {
@@ -90,13 +87,17 @@ class AutoService : AccessibilityService() {
     }
 
     private fun initControllers() {
-        controller = XiaoHongShuController(this, "com.xingin.xhs")
+//        controller = XiaoHongShuSearchUserController(this, "com.xingin.xhs")
+//        controller = XiaoHongShuSearchContentController(this, "com.xingin.xhs")
+        controller = XiaoHongShuAutoReplyController(this, "com.xingin.xhs")
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-
         // 均在主线程
-//        Log.i("zunyu", "----event---pkg = ${event?.packageName}----event---page = ${event?.className}---type = ${event?.eventType}----")
+        Log.i(
+            "zunyu",
+            "----event---pkg = ${event?.packageName}----event---page = ${event?.className}---type = ${event?.eventType}----"
+        )
         controller?.onAccessibilityEvent(event)
     }
 

@@ -15,7 +15,7 @@ import com.subconscious.anotherme.util.ScreenUtil
 import com.subconscious.anotherme.util.TraversalUtil
 
 
-class XiaoHongShuController(var service: AccessibilityService, var curPackage: String) :
+class XiaoHongShuSearchUserController(var service: AccessibilityService, var curPackage: String) :
     BaseController() {
 
     var curPage: String? = null
