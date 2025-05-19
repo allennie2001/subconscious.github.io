@@ -24,7 +24,7 @@ object TraversalUtil {
         val dateNode = findDateByDeepTraversal(node)
         if (dateNode?.parent != null) {
             val userNode = dateNode.parent!!.getChild(0)
-            Log.d("findNodeByDeepTraversal", "userName = ${userNode.text}")
+            Log.d("zunyu", "userName = ${userNode.text}")
             return userNode.text.toString()
         }
         return ""
@@ -36,7 +36,7 @@ object TraversalUtil {
             return null
         }
         if ("android.widget.TextView".equals(node.className)) {
-            Log.d("findNodeByDeepTraversal", "text = " + node.text)
+            Log.d("zunyu", "text = " + node.text)
         }
         if (node.childCount > 0) {
             for (i in 0 until node.childCount) {
@@ -46,7 +46,7 @@ object TraversalUtil {
 //                val child = node.getChild(i)
 //                var isNum = false
 //                if (child != null && "android.widget.TextView".equals(child.className)) {
-//                    Log.d("findNodeByDeepTraversal", "text = " + child.text)
+//                    Log.d("zunyu, "text = " + child.text)
 //                    if (child.text.contains("-")) {
 //                        isNum = true
 //                        val stringList = child.text.toString().split("-")
@@ -98,7 +98,7 @@ object TraversalUtil {
         if (node != null && node.childCount > 0) {
             for (i in 0 until node.childCount) {
                 var child = node.getChild(i)
-                Log.d("findNodeByDeepTraversal", "className = " + child.className)
+                Log.d("zunyu", "className = " + child.className)
                 if (child != null && className == child.className) {
                     result = child
                     break
@@ -113,7 +113,7 @@ object TraversalUtil {
     fun logTextInChildren(node: AccessibilityNodeInfo?) {
         if (node != null) {
             if (!node.text.isNullOrEmpty()) {
-                Log.d("findNodeByDeepTraversal", node.text.toString())
+                Log.d("zunyu", node.text.toString())
             }
             if (node.childCount > 0) {
                 for (i in 0 until node.childCount) {

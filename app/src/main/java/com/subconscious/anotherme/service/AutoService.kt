@@ -87,17 +87,17 @@ class AutoService : AccessibilityService() {
     }
 
     private fun initControllers() {
-//        controller = XiaoHongShuSearchUserController(this, "com.xingin.xhs")
+        controller = XiaoHongShuSearchUserController(this, "com.xingin.xhs")
 //        controller = XiaoHongShuSearchContentController(this, "com.xingin.xhs")
-        controller = XiaoHongShuAutoReplyController(this, "com.xingin.xhs")
+//        controller = XiaoHongShuAutoReplyController(this, "com.xingin.xhs")
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         // 均在主线程
-        Log.i(
-            "zunyu",
-            "----event---pkg = ${event?.packageName}----event---page = ${event?.className}---type = ${event?.eventType}----"
-        )
+//        Log.i(
+//            "zunyu",
+//            "----event---pkg = ${event?.packageName}----event---page = ${event?.className}---type = ${event?.eventType}----"
+//        )
         controller?.onAccessibilityEvent(event)
     }
 

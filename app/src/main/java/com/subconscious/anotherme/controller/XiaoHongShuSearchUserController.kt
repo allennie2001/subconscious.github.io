@@ -533,23 +533,15 @@ class XiaoHongShuSearchUserController(var service: AccessibilityService, var cur
                 ClickUtil.performActionClickByText("更多", service)
 
                 hander.postDelayed({
-//                    ClickUtil.boundClick(100, ScreenUtil.screenHeight!! - 100, service)
-//                    ClipboardUtil.setTopApp("com.subconscious.anotherme")
-//                    hander.postDelayed({
-//                        ClipboardUtil.getClipboardContent(service)
-//                        hander.postDelayed({
-//                            searchDataList.removeAt(0)
-//                            ClipboardUtil.bringAppToForeground("com.xingin.xhs")
-//                        }, 500)
-//                                       }, 500)
-
                     ClickUtil.boundClick(100, ScreenUtil.screenHeight!! - 100, service)
-                    ClipboardUtil.setTopApp("com.subconscious.anotherme")
                     hander.postDelayed({
-                        ClipboardUtil.getClipboardContent(service)
-                        searchDataList.removeAt(0)
-                        ClipboardUtil.bringAppToForeground("com.xingin.xhs")
-                    }, 500)
+                        ClipboardUtil.setTopApp("com.subconscious.anotherme")
+                        hander.postDelayed({
+                            ClipboardUtil.getClipboardContent(service)
+                            searchDataList.removeAt(0)
+                            ClipboardUtil.bringAppToForeground("com.xingin.xhs")
+                        }, 500)
+                    }, 1000)
                 }, 1000)
 
             }
