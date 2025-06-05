@@ -98,7 +98,7 @@ object TraversalUtil {
         if (node != null && node.childCount > 0) {
             for (i in 0 until node.childCount) {
                 var child = node.getChild(i)
-                Log.d("zunyu", "className = " + child.className)
+//                Log.d("zunyu", "className = " + child.className)
                 if (child != null && className == child.className) {
                     result = child
                     break
@@ -108,6 +108,34 @@ object TraversalUtil {
             }
         }
         return result
+    }
+
+    var followTag = false
+    var followList: MutableList<String> = mutableListOf()
+
+    fun logTextInChildrenNextFollow(node: AccessibilityNodeInfo?) {
+        if (node != null) {
+            if (!node.text.isNullOrEmpty()) {
+                var needTag = false
+                if ("关注".equals(node.text.toString())) {
+                    needTag = true
+                }
+                if (followTag) {
+                    Log.d("zunyu", node.text.toString())
+                    followList.add(node.text.toString())
+                    followTag = false
+                }
+                if (needTag) {
+                    followTag = true
+                }
+            }
+            if (node.childCount > 0) {
+                for (i in 0 until node.childCount) {
+                    val child = node.getChild(i)
+                    logTextInChildrenNextFollow(child)
+                }
+            }
+        }
     }
 
     fun logTextInChildren(node: AccessibilityNodeInfo?) {

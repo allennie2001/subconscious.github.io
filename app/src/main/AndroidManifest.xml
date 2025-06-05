@@ -44,6 +44,7 @@
 
         <activity
             android:name=".activity.ResultActivity"
+            android:launchMode="singleTop"
             android:exported="true" />
 
         <service

@@ -12,8 +12,10 @@ import android.view.accessibility.AccessibilityEvent
 import android.widget.Toast
 import com.subconscious.anotherme.R
 import com.subconscious.anotherme.controller.BaseController
+import com.subconscious.anotherme.controller.XHSSearchUserFollowListController
 import com.subconscious.anotherme.controller.XiaoHongShuAutoReplyController
 import com.subconscious.anotherme.controller.XiaoHongShuSearchContentController
+import com.subconscious.anotherme.controller.XiaoHongShuSearchGoodsController
 import com.subconscious.anotherme.controller.XiaoHongShuSearchUserController
 import com.subconscious.anotherme.util.ClipboardUtil
 
@@ -90,6 +92,8 @@ class AutoService : AccessibilityService() {
         controller = XiaoHongShuSearchUserController(this, "com.xingin.xhs")
 //        controller = XiaoHongShuSearchContentController(this, "com.xingin.xhs")
 //        controller = XiaoHongShuAutoReplyController(this, "com.xingin.xhs")
+//        controller = XiaoHongShuSearchGoodsController(this, "com.xingin.xhs")
+//        controller = XHSSearchUserFollowListController(this, "com.xingin.xhs")
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {

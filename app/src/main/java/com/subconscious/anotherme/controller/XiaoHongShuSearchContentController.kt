@@ -188,7 +188,7 @@ class XiaoHongShuSearchContentController(
                     ClickUtil.boundClick(100, ScreenUtil.screenHeight!! - 100, service)
                     ClipboardUtil.setTopApp("com.subconscious.anotherme")
                     hander.postDelayed({
-                        ClipboardUtil.getClipboardContent(service)
+                        ClipboardUtil.getClipboardContent(service, curSearchContent)
                         searchDataList.removeAt(0)
                         ClipboardUtil.bringAppToForeground("com.xingin.xhs")
                     }, 500)

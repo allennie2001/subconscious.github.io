@@ -1,7 +1,6 @@
 package com.subconscious.anotherme.controller
 
 import android.accessibilityservice.AccessibilityService
-import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -14,10 +13,9 @@ import com.subconscious.anotherme.util.ClickUtil
 import com.subconscious.anotherme.util.ClipboardUtil
 import com.subconscious.anotherme.util.ScreenUtil
 import com.subconscious.anotherme.util.TraversalUtil
-import com.subconscious.anotherme.util.TraversalUtil.logTextInChildren
 
 
-class XiaoHongShuAutoReplyController(
+class XiaoHongShuSearchGoodsController(
     var service: AccessibilityService,
     var curPackage: String
 ) :
@@ -107,22 +105,11 @@ class XiaoHongShuAutoReplyController(
                 if (curPage.equals("com.xingin.alioth.search.GlobalSearchActivity")) {
                     baseSearchLog = "默认搜索推荐"
                 } else {
-                    baseSearchLog = "搜索{${searchDataList[0]}提示词}"
+                    baseSearchLog = "搜索{${searchDataList.get(0)}提示词}"
                 }
-                if (searchListNode != null && searchListNode.childCount > 0) {
-                    for (i in 0 until searchListNode.childCount) {
-                        val child = searchListNode.getChild(i)
-                        var rect = Rect()
-                        child.getBoundsInScreen(rect)
-                        if (rect.right < ScreenUtil.screenWidth!! || rect.left > 0) {
-                            // 命中左右feeds流卡片
-//                            ClickUtil.pointClick(child, service)
-                            TraversalUtil.logTextInChildren(child)
-                        }
-                    }
-                }
-                searchListNode?.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD)
-                Thread.sleep(1000)
+                Log.d("zunyu", "-----------${baseSearchLog}：爬虫开始-------------")
+                searchListNode?.let { TraversalUtil.logTextInChildren(it) }
+                Log.d("zunyu", "-----------${baseSearchLog}：爬虫结束-------------")
 
 
                 if (isBackFromTalentPage) {

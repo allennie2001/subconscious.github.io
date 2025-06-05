@@ -27,8 +27,12 @@ object ClickUtil {
                 if ("搜索".equals(text) && "拍照搜索".equals(info.contentDescription)) {
                     continue
                 }
-                if (info.isClickable) {
-                    info.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                if ((text == info.text || text == info.contentDescription)) {
+                    if (info.isClickable) {
+                        info.performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                    } else {
+                        pointClick(info, service)
+                    }
                 }
             }
         }
@@ -55,7 +59,6 @@ object ClickUtil {
         service.dispatchGesture(gesture, object : GestureResultCallback() {
             override fun onCompleted(gestureDescription: GestureDescription) {
                 super.onCompleted(gestureDescription)
-                Log.d("zunyu","完成点击")
             }
         }, null)
     }
